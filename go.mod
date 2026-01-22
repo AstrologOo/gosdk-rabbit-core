@@ -5,7 +5,7 @@ go 1.25.5
 require (
 	github.com/ThreeDotsLabs/watermill v1.5.1
 	github.com/ThreeDotsLabs/watermill-amqp/v2 v2.1.3
-	github.com/exgamer/gosdk-core v1.0.15
+	github.com/exgamer/gosdk-core v1.0.16
 	github.com/getsentry/sentry-go v0.41.0
 	github.com/google/uuid v1.6.0
 )
