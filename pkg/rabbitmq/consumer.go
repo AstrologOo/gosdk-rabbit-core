@@ -65,6 +65,11 @@ func NewAmqpConsumer(conn *amqp.ConnectionWrapper) (*Consumer, error) {
 	}, nil
 }
 
+// GetConnection возвращает AMQP-соединение для низкоуровневых операций (например, объявления очередей).
+func (a *Consumer) GetConnection() *amqp.ConnectionWrapper {
+  	return a.conn
+}
+
 // WithErrorAction — политика при ошибке handler-а.
 func (a *Consumer) WithErrorAction(action ErrorAction) *Consumer {
 	a.onError = action
