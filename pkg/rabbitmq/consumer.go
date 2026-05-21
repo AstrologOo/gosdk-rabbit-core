@@ -65,6 +65,19 @@ func NewAmqpConsumer(conn *amqp.ConnectionWrapper) (*Consumer, error) {
 	}, nil
 }
 
+// DeclareQueue объявляет очередь используя существующее соединение consumer-а.
+func (a *Consumer) DeclareQueue(name string, args amqp.Table) error {
+	ch, err := a.conn.AmqpConnection().Channel()
+	if err != nil {
+		
+		return err
+	}
+	defer ch.Close()
+	_, err = ch.QueueDeclare(name, true, false, false, false, args)
+	
+	return err
+}
+
 // WithErrorAction — политика при ошибке handler-а.
 func (a *Consumer) WithErrorAction(action ErrorAction) *Consumer {
 	a.onError = action
